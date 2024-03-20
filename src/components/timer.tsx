@@ -1,75 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
+import { useTimer } from 'react-timer-hook';
 
-const Timer: React.FC = () => {
-  const [workTimer, setWorkTimer] = useState<number>(0);
-  const [breakTimer, setBreakTimer] = useState<number>(0);
-  const [isWorkTime, setIsWorkTime] = useState<boolean>(true); // To track whether it's work or break time
-  const [isActive, setIsActive] = useState<boolean>(false); // To control the start and stop of the timer
+const PomodoroTimer = () => {
+  const expiryTimestamp = new Date();
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 1 * 60); // 25 minutes from now
 
-  useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | null = null;
+  const {
+    seconds,
+    minutes,
+    start,
+    pause,
+    restart,
+  } = useTimer({
+    expiryTimestamp,
+    onExpire: () => alert('Time is up!'),
+  });
 
-    // Function to decrement timer
-    const countdown = (): void => {
-      if (isWorkTime && workTimer > 0) {
-        setWorkTimer((workTimer) => workTimer - 1);
-      } else if (!isWorkTime && breakTimer > 0) {
-        setBreakTimer((breakTimer) => breakTimer - 1);
-      }
-
-      // Switch between work and break timer
-      if (isWorkTime && workTimer === 0) {
-        setIsWorkTime(false);
-      } else if (!isWorkTime && breakTimer === 0) {
-        setIsWorkTime(true);
-        setWorkTimer(initialWorkTime);
-        setBreakTimer(initialBreakTime);
-      }
-    };
-
-    if (isActive) {
-      interval = setInterval(countdown, 1000);
-    }
-
-    return () => {
-      if (interval) clearInterval(interval); // Cleanup interval on component unmount
-    };
-  }, [isActive, isWorkTime, workTimer, breakTimer]);
-
-  // Handle the start button click
-  const handleStart = (): void => {
-    setIsActive(true);
+  // Restart timer function to reset it to 25 minutes
+  const restartTimer = () => {
+    const newExpiryTimestamp = new Date();
+    newExpiryTimestamp.setSeconds(newExpiryTimestamp.getSeconds() + 1 * 60);
+    restart(newExpiryTimestamp);
   };
 
+  React.useEffect(() => {
+    start();
+    // Component will unmount logic handled internally by useTimer
+  }, [start]);
+
   return (
-    <form
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}
-    >
-      <label htmlFor="work-timer">Work timer: </label>
-      <input
-        type="number"
-        id="work-timer"
-        name="work-timer"
-        value={workTimer}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setWorkTimer(Number(e.target.value))
-        }
-      />
-      <label htmlFor="break-timer">Break timer: </label>
-      <input
-        type="number"
-        id="break-timer"
-        name="break-timer"
-        value={breakTimer}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setBreakTimer(Number(e.target.value))
-        }
-      />
-      <button type="button" onClick={handleStart}>
-        Start
-      </button>
-    </form>
+    <div>
+      <h1>Pomodoro Timer</h1>
+      <div>
+        <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+      </div>
+      <button onClick={pause}>Pause</button>
+      <button onClick={start}>Start</button>
+      <button onClick={restartTimer}>Restart</button>
+    </div>
   );
 };
 
-export default Timer;
+export default PomodoroTimer;
