@@ -1,5 +1,5 @@
-import  { useState, useEffect } from 'react';
-import { useTimer } from 'react-timer-hook';
+import { useState, useEffect } from "react";
+import { useTimer } from "react-timer-hook";
 
 const PomodoroTimer = () => {
   const [pomodoroLength, setPomodoroLength] = useState(25); // Default to 25 minutes
@@ -9,7 +9,9 @@ const PomodoroTimer = () => {
   // Function to initialize or restart the timer
   const initializeTimer = (length: number) => {
     const newExpiryTimestamp = new Date();
-    newExpiryTimestamp.setSeconds(newExpiryTimestamp.getSeconds() + length * 60);
+    newExpiryTimestamp.setSeconds(
+      newExpiryTimestamp.getSeconds() + length * 60,
+    );
     return newExpiryTimestamp;
   };
 
@@ -32,19 +34,19 @@ const PomodoroTimer = () => {
     }
   }, [isPomodoro]);
 
-  // Handle "Start" button - only works if the timer is not already running
   const handleStart = () => {
     restart(initializeTimer(isPomodoro ? pomodoroLength : breakLength), true);
   };
 
-  // Handle "Stop" button - resets to Pomodoro timer without starting it
   const handleStop = () => {
-    setIsPomodoro(true); // Reset to Pomodoro mode
-    restart(initializeTimer(pomodoroLength), false); // Reset and stop the timer
+    setIsPomodoro(true);
+    restart(initializeTimer(pomodoroLength), false);
   };
 
-  // Input change handlers - adjust timer lengths
-  const handlePomodoroLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // adjust timer lengths
+  const handlePomodoroLengthChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const newLength = Number.isNaN(+e.target.value) ? 25 : +e.target.value;
     setPomodoroLength(newLength);
     if (isPomodoro) restart(initializeTimer(newLength), false); // Update timer only if it's Pomodoro time
@@ -59,13 +61,23 @@ const PomodoroTimer = () => {
   return (
     <>
       <div>
-        <h1>{isPomodoro ? 'Pomodoro Timer' : 'Break Timer'}</h1>
+        <h1>{isPomodoro ? "Pomodoro Timer" : "Break Timer"}</h1>
       </div>
       <form>
         <label>Pomodoro Length (minutes):</label>
-        <input type="number" value={pomodoroLength} onChange={handlePomodoroLengthChange} />
+        <input
+          className="no-spinner"
+          type="number"
+          value={pomodoroLength}
+          onChange={handlePomodoroLengthChange}
+        />
         <label>Break Length (minutes):</label>
-        <input type="number" value={breakLength} onChange={handleBreakLengthChange} />
+        <input
+          className="no-spinner"
+          type="number"
+          value={breakLength}
+          onChange={handleBreakLengthChange}
+        />
       </form>
       <div>
         <span>{minutes}:</span>

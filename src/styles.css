@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom class to remove spinner */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  @layer appearance-none;
+  margin: 0;
+}
+
+.no-spinner {
+  @layer -moz-appearance-textfield;
+}
