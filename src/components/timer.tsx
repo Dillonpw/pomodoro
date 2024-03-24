@@ -61,13 +61,15 @@ const PomodoroTimer = () => {
   return (
     <>
       <div>
-        <h1>{isPomodoro ? "Pomodoro Timer" : "Break Timer"}</h1>
+        <h1>{isPomodoro ? "Keep working!" : "Take a break!"}</h1>
       </div>
       <form>
         <label>Pomodoro Length (minutes):</label>
         <input
           className="no-spinner"
           type="number"
+          min={1}
+          max={60}
           value={pomodoroLength}
           onChange={handlePomodoroLengthChange}
         />
@@ -75,6 +77,8 @@ const PomodoroTimer = () => {
         <input
           className="no-spinner"
           type="number"
+          min={1}
+          max={60}
           value={breakLength}
           onChange={handleBreakLengthChange}
         />
