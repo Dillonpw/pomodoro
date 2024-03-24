@@ -59,7 +59,7 @@ const PomodoroTimer = () => {
   };
 
   return (
-    <>
+    <main className="flex  flex-col text-white ">
       <div>
         <h1>{isPomodoro ? "Keep working!" : "Take a break!"}</h1>
       </div>
@@ -75,7 +75,7 @@ const PomodoroTimer = () => {
         />
         <label>Break Length (minutes):</label>
         <input
-          className="no-spinner"
+          className="no-spinner px-2 rounded-lg border-2 border-black"
           type="number"
           min={1}
           max={60}
@@ -87,9 +87,21 @@ const PomodoroTimer = () => {
         <span>{minutes}:</span>
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
       </div>
-      <button onClick={handleStart}>Start</button>
-      <button onClick={handleStop}>Stop</button>
-    </>
+      <div className="flex justify-center text-black">
+        <button
+          className="m-2 w-24 rounded-xl border-2 border-solid border-white bg-green-200 p-3"
+          onClick={handleStart}
+        >
+          Start
+        </button>
+        <button
+          className="m-2 w-24 rounded-xl border-2 border-solid border-white bg-green-200 p-3"
+          onClick={handleStop}
+        >
+          Reset
+        </button>
+      </div>
+    </main>
   );
 };
 
