@@ -63,10 +63,10 @@ const PomodoroTimer = () => {
       <div>
         <h1>{isPomodoro ? "Keep working!" : "Take a break!"}</h1>
       </div>
-      <form>
+      <form className="flex flex-col items-center justify-center">
         <label>Pomodoro Length (minutes):</label>
         <input
-          className="no-spinner"
+          className="w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner hover:scale-105"
           type="number"
           min={1}
           max={60}
@@ -75,7 +75,7 @@ const PomodoroTimer = () => {
         />
         <label>Break Length (minutes):</label>
         <input
-          className="no-spinner px-2 rounded-lg border-2 border-black"
+          className="w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner hover:scale-105"
           type="number"
           min={1}
           max={60}
