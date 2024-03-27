@@ -20,8 +20,8 @@
     "windows": [
       {
         "title": "pomodoro",
-        "width": 800,
-        "height": 600
+        "width": 300,
+        "height": 200
       }
     ],
     "security": {
