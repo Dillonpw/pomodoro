@@ -11,3 +11,14 @@ This Pomodoro Timer app is a modern desktop application designed to help you man
 
 ## Coming Soon
 - **Customizable Themes:** Choose from various themes or create your own to personalize your timer.
+
+# Installation
+
+1. open a terminal window and clone the repository:
+- <code>git clone https://github.com/dillonpw/pomodoro.git</code>
+
+2. in the same terminal window, change the directory to the App:
+- <code>cd pomodoro</code>
+
+3. in the same terminal window, **build** the App:
+- <code>npm run tauri build</code>
