@@ -6,7 +6,8 @@ This Pomodoro Timer app is a modern desktop application designed to help you man
 
 - **Pomodoro Timer:** Set custom focus intervals to divide your work into manageable chunks.
 - **Short and Long Breaks:** Customize the duration of your short and long breaks to suit your work rhythm.
-- **Task List:** Keep track of your tasks and mark them as completed as you go through your Pomodoro sessions.
-- **Notifications:** Receive desktop notifications in the app to alert you when it's time to take a break or resume work.
 - **Cross-Platform:** Available on Windows, macOS, and Linux, thanks to the Tauri framework.
+
+
+## Coming Soon
 - **Customizable Themes:** Choose from various themes or create your own to personalize your timer.
