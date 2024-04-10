@@ -81,24 +81,25 @@ const PomodoroTimer = () => {
       </div>
       <div className="flex justify-center text-black">
         <button
-          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-blue-400 px-4 py-1 text-white hover:scale-105"
+          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-blue-400 px-4 py-1 text-white hover:bg-blue-500"
           onClick={handleStart}
         >
           Start
         </button>
         <button
-          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-red-500 px-4 py-1 text-white hover:scale-105"
+          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-red-500 px-4 py-1 text-white hover:bg-red-700"
           onClick={handleStop}
         >
           Reset
         </button>
       </div>
-      <form className={`mt-10 grid grid-cols-2 place-items-center ${isTimerRunning ? 'hidden' : 'grid'}`}>
+      <form
+        className={`mt-10 grid grid-cols-2 place-items-center ${isTimerRunning ? "hidden" : "grid"}`}
+      >
         <div className="grid grid-cols-1 place-items-center">
           <label>Work Length:</label>
-          <p className="text-xs">minutes</p>
           <input
-            className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner hover:bg-gray-100 focus:cursor-text"
+            className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner focus:cursor-text"
             type="number"
             min={1}
             max={60}
@@ -106,12 +107,12 @@ const PomodoroTimer = () => {
             onChange={handlePomodoroLengthChange}
             disabled={isTimerRunning}
           />
+          <p className="text-xs">minutes</p>
         </div>
         <div className="grid grid-cols-1 place-items-center">
           <label>Break Length:</label>
-          <p className="text-xs">minutes</p>
           <input
-            className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner hover:bg-gray-100 focus:cursor-text"
+            className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner focus:cursor-text"
             type="number"
             min={1}
             max={60}
@@ -119,6 +120,7 @@ const PomodoroTimer = () => {
             onChange={handleBreakLengthChange}
             disabled={isTimerRunning}
           />
+          <p className="text-xs">minutes</p>
         </div>
       </form>
     </main>
