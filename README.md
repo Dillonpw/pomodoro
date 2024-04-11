@@ -1,6 +1,6 @@
 # Pomodoro Timer App
 
-This Pomodoro Timer app is a modern desktop application designed to help you manage your time more effectively using the Pomodoro Technique. Built with Tauri for a lightweight and secure cross-platform experience, it combines the power of TypeScript and React for efficient and scalable development. The UI is styled with Tailwind CSS for a sleek and responsive design, and the codebase is consistently formatted with Prettier to ensure readability and maintainability.
+This Pomodoro Timer app is a modern desktop application designed to help you manage your time more effectively using the Pomodoro Technique. Built with Tauri, using TypeScript and React for efficient and scalable development. The UI is styled with Tailwind CSS and the codebase is consistently formatted with Prettier to ensure readability and maintainability.
 
 ## Features
 
