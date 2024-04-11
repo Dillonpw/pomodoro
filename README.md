@@ -8,8 +8,9 @@ This Pomodoro Timer app is a modern desktop application designed to help you man
 - **Short and Long Breaks:** Customize the duration of your short and long breaks to suit your work rhythm.
 - **Cross-Platform:** Available on Windows, macOS, and Linux, thanks to the Tauri framework.
 
-
-<img width="367" alt="Pomodoro" src="https://github.com/Dillonpw/pomodoro/assets/136388405/6e797eb7-4196-4908-a054-b39b1bc51f13">
+<p align="center">
+<img width="367"  alt="Pomodoro" src="https://github.com/Dillonpw/pomodoro/assets/136388405/6e797eb7-4196-4908-a054-b39b1bc51f13">
+</p>
 
 
 ## Coming Soon
