@@ -75,7 +75,7 @@ const PomodoroTimer = () => {
         </h1>
       </div>
 
-      <div className="m-4 flex justify-center text-4xl font-bold">
+      <div className="m-4 flex justify-center text-4xl font-bold font-mono">
         <span>{minutes}:</span>
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
       </div>
@@ -96,7 +96,7 @@ const PomodoroTimer = () => {
       <form
         className={`mt-10 grid grid-cols-2 place-items-center ${isTimerRunning ? "hidden" : "grid"}`}
       >
-        <div className="grid grid-cols-1 place-items-center">
+        <div className="grid grid-cols-1 place-items-center font-mono">
           <label>Work Length:</label>
           <input
             className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner focus:cursor-text"
