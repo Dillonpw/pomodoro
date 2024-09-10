@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useTimer } from "react-timer-hook";
+import { Button } from "./ui/button";
 
 const PomodoroTimer = () => {
   const [pomodoroLength, setPomodoroLength] = useState(25); // Default to 25 minutes
@@ -46,7 +47,6 @@ const PomodoroTimer = () => {
     setIsTimerRunning(false); // Indicate that the timer has stopped
   };
 
-  // Adjust timer lengths
   const handlePomodoroLengthChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -65,7 +65,7 @@ const PomodoroTimer = () => {
     <main className="flex flex-col">
       <div>
         <h1
-          className={`m-8 text-center text-4xl font-bold ${isPomodoro ? "text-blue-900" : "text-red-500"}`}
+          className={`m-8 text-center text-4xl font-bold ${isPomodoro ? "text-primary" : "text-destructive"}`}
         >
           {!isTimerRunning
             ? "Ready to Go?"
@@ -75,28 +75,22 @@ const PomodoroTimer = () => {
         </h1>
       </div>
 
-      <div className="m-4 flex justify-center text-4xl font-bold font-mono">
+      <div className="m-4 flex justify-center font-mono text-4xl font-bold">
         <span>{minutes}:</span>
         <span>{seconds < 10 ? `0${seconds}` : seconds}</span>
       </div>
-      <div className="flex justify-center text-black">
-        <button
-          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-blue-400 px-4 py-1 text-white hover:bg-blue-500"
-          onClick={handleStart}
-        >
+      <div className="flex justify-center gap-4 text-black">
+        <Button variant="default" onClick={handleStart}>
           Start
-        </button>
-        <button
-          className="w-18 m-2 rounded-xl border-2 border-solid border-black bg-red-500 px-4 py-1 text-white hover:bg-red-700"
-          onClick={handleStop}
-        >
+        </Button>
+        <Button variant="destructive" onClick={handleStop}>
           Reset
-        </button>
+        </Button>
       </div>
       <form
-        className={`mt-10 grid grid-cols-2 place-items-center ${isTimerRunning ? "hidden" : "grid"}`}
+        className={`flex flex-row items-center justify-center gap-4 space-y-4 ${isTimerRunning ? "hidden" : ""}`}
       >
-        <div className="grid grid-cols-1 place-items-center font-mono">
+        <div className="mt-4 flex flex-col place-items-center font-mono">
           <label>Work Length:</label>
           <input
             className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner focus:cursor-text"
@@ -109,7 +103,7 @@ const PomodoroTimer = () => {
           />
           <p className="text-xs">minutes</p>
         </div>
-        <div className="grid grid-cols-1 place-items-center">
+        <div className="mt-4 flex flex-col place-items-center font-mono">
           <label>Break Length:</label>
           <input
             className="m-1 w-14 rounded-lg border-2 border-black px-2 text-center text-black outline-none no-spinner focus:cursor-text"
