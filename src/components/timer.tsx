@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useTimer } from "react-timer-hook";
 import { Button } from "./ui/button";
+import useSound from "use-sound";
 
 const PomodoroTimer = () => {
   const [pomodoroLength, setPomodoroLength] = useState(25); // Default to 25 minutes
   const [breakLength, setBreakLength] = useState(5); // Default to 5 minutes
   const [isPomodoro, setIsPomodoro] = useState(true); // Track if it's Pomodoro time or break time
   const [isTimerRunning, setIsTimerRunning] = useState(false); // Track if the timer is active
+  const [playSound] = useSound("/public/bell.mp3", { volume: 0.25 });
 
   // Function to initialize or restart the timer
   const initializeTimer = (length: number) => {
@@ -25,6 +27,7 @@ const PomodoroTimer = () => {
     expiryTimestamp,
     autoStart: false,
     onExpire: () => {
+      playSound();
       setIsPomodoro(!isPomodoro); // Toggle between Pomodoro and break
       setIsTimerRunning(false); // Stop the timer when it expires
     },
@@ -56,7 +59,7 @@ const PomodoroTimer = () => {
   };
 
   const handleBreakLengthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newLength = e.target.valueAsNumber || 5;
+    const newLength = Number.isNaN(+e.target.value) ? 5 : +e.target.value;
     setBreakLength(newLength);
     if (!isPomodoro) restart(initializeTimer(newLength), false);
   };
